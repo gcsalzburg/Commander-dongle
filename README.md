@@ -1,8 +1,8 @@
-# RUROC LoRa Dongle
+# Commander LoRa Dongle
 
 A relay dongle, to interface between incoming LoRa commands and the Serial port on the PC.
 
-This is a dumb unit. It has no knowledge of the Ruroc LoRa protocol, or any other protocol in general. It just forwards bytes of data!
+This is a dumb unit. It has no knowledge of any LoRa comms protocol, or any other protocol in general. It just forwards bytes of data!
 
 **Uses**
 
