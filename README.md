@@ -9,6 +9,12 @@ This is a dumb unit. It has no knowledge of the Ruroc LoRa protocol, or any othe
 + Forward incoming LoRa signals from nodes to the serial port for further processing in web-based UI
 + Transmitting serial port commands out via LoRa
 
+**Options**
+
+Set `report_rssi = true` to append the RSSI for the message to the Serial string with a `|` divider.
+
+For example, a -44dBm RSSI would be appended as: `RRr.d00.siq|-44`
+
 **Build**
 
 + Environment: `PlatformIO`
