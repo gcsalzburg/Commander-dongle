@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <RH_RF95.h>
-     
+
 // Setup for LoRa radio
 #define RFM95_CS 8
 #define RFM95_RST 4
@@ -21,6 +21,8 @@ uint8_t serial_i = 0;
 void msg_receive();
 void msg_send(char *msg, uint8_t len);
 
+// RSSI transmission details
+bool report_rssi = true;
 int16_t last_rssi = 0;
      
 //
@@ -85,11 +87,21 @@ void msg_receive(){
 	uint8_t len = sizeof(buf);
 
 	if (rf95.recv(buf, &len)){
+
 		// Send to Serial
-		Serial.println((char*)buf);
+		Serial.print((char*)buf);
 
 		// Save last RSSI in case we want it
 		last_rssi = rf95.lastRssi();
+
+		if(report_rssi){
+			Serial.print("|");
+			Serial.print(last_rssi);
+		}
+
+		// Terminate messages with new line
+		Serial.println();
+
 	}else{
 		// Receive must have failed, for some reason
 	}
